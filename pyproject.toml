@@ -1,0 +1,38 @@
+[project]
+name = "commit-review-agent"
+version = "0.1.0"
+description = "A commit review tool using GPT and Claude"
+authors = [
+    { name = "sunyeul", email = "res1235@gmail.com" }
+]
+dependencies = [
+    "openai>=1.38.0",
+    "anthropic>=0.32.0",
+    "python-dotenv>=1.0.1",
+    "gitpython>=3.1.43",
+    "requests>=2.32.3",
+    "click>=8.1.7",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[project.scripts]
+commit-review = "commit_review.__main__:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.5.6",
+    "pre-commit>=3.8.0",
+    "ipykernel>=6.29.5",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["commit_review"]

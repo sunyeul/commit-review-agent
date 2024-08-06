@@ -15,27 +15,26 @@ pip install git+https://github.com/yourusername/commit-review-agent.git
 `commit-review-agent`パッケージは、コマンドラインツールとして使用できます。以下のコマンドを実行して、ステージされたPythonファイルのコードレビューを行います。
 
 ```bash
-commit-review-agent
+rye run commit-review
 ```
-
-## 開発
 
 ## pre-commitとの連携
 
 pre-commitフックを設定して、コミット前にコードを自動的にレビューします。以下の手順に従って設定してください。
 
-1. pre-commit-config.yamlファイルを作成
+1. `.pre-commit-config.yaml`ファイルを作成
 
     ```yaml
-    -   repo: https://github.com/sunyeul/commit-review-agent
-        hooks:
-        - id: commie-review
-            name: Commit Review
-            entry: commit-review-agent
-            language: python
-            types: [python]
-            pass_filenames: false
-            verbose: true
+	-   repo: https://github.com/sunyeul/commit-review-agent
+	    rev: v0.1.1
+	    hooks:
+	    - id: commie-review
+	      name: Commit Review
+	      entry: rye run commit-review
+	      language: python
+	      types: [python]
+	      pass_filenames: false
+	      verbose: true
     ```
 
 2. pre-commitをインストールして有効化

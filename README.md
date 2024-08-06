@@ -46,6 +46,24 @@ pre-commitフックを設定して、コミット前にコードを自動的に�
 
 これで、Gitのコミット前に自動的にコードレビューが実行されるようになります。
 
+## レビューポイントの指定
+
+レビューのポイントを指定したい場合は、`.pre-commit-config.yaml`に`arg: [--review-point, {レビューポイント}]`を追加します。何も指定しない場合のレビューポイントは可読性です。
+
+```yaml
+-   repo: https://github.com/sunyeul/commit-review-agent
+    rev: v0.1.1
+    hooks:
+    - id: commie-review
+      name: Commit Review
+      entry: rye run commit-review
+      args: [--review-point, {レビューポイント}]
+      language: python
+      types: [python]
+      pass_filenames: false
+      verbose: true
+```
+
 ## 環境変数の設定
 
 コードレビューを行うために、OpenAIおよびAnthropicのAPIキーを環境変数として設定する必要があります。プロジェクトのルートディレクトリに'.env'ファイルを作成し、以下の内容を追加します。

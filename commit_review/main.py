@@ -9,21 +9,6 @@ from .git_utils import (
     get_staged_python_files,
 )
 
-# def commit_changes_if_confirmed(repo):
-#     """コミットの実行確認と実行を行います。"""
-#     if confirm_commit():
-#         commit_message = repo.head.commit.message.strip()
-#         if not commit_message:
-#             commit_message = input("コミットメッセージを入力してください: ").strip()
-#         if commit_message:
-#             commit_changes(repo, commit_message)
-#         else:
-#             print("エラー: コミットメッセージが空です。コミットを中止します。")
-#             exit(1)
-#     else:
-#         print("コミットがキャンセルされました。")
-#         exit(1)
-
 
 def main(review_point: str, api_choice: str) -> None:
     """メイン関数。ステージされたPythonファイルに対してレビューを行います。"""

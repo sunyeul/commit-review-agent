@@ -30,7 +30,7 @@ def get_changed_content(repo: Repo, file_path: str) -> str:
         diff = repo.git.diff("--cached", file_path, unified=0)
         return "\n".join(
             [
-                line[1:]
+                line
                 for line in diff.splitlines()
                 if line.startswith(("+", "-")) and not line.startswith(("+++", "---"))
             ]

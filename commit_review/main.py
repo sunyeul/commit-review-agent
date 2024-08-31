@@ -21,7 +21,6 @@ def main(api_choice: str, review_point: Optional[str] = None) -> None:
     review_api_manager = ReviewAPIManager(api_choice=api_choice)
 
     staged_python_files = get_staged_python_files(repo=repo)
-    print("staged_python_files", staged_python_files)
     if not staged_python_files:
         print("変更されたPythonファイルがありません")
         sys.exit(0)

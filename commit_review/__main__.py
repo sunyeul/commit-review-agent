@@ -5,16 +5,16 @@ from .main import main
 
 @click.command()
 @click.option(
-    "--review-point", type=str, default="可読性", help="レビューのポイントを指定します"
+    "--api-choice",
+    type=click.Choice(["openai", "anthropic"]),
+    default="openai",
+    help="使用するAPIを指定します (デフォルトは openai)",
 )
 @click.option(
-    "--api-choice",
-    type=click.Choice(["gpt", "claude"]),
-    default="gpt",
-    help="使用するAPIを指定します (デフォルトは gpt)",
+    "--review-point", type=str, default=None, help="レビューのポイントを指定します"
 )
-def run(review_point, api_choice):
-    main(review_point, api_choice)
+def run(api_choice, review_point):
+    main(api_choice, review_point)
 
 
 if __name__ == "__main__":

@@ -8,8 +8,10 @@ repos:
         # Run the linter.
         - id: ruff
           args: [--fix, --select, I]
+          stages: ["pre-commit"]
         # Run the formatter.
         - id: ruff-format
+          stages: ["pre-commit"]
 
 -   repo: local
     hooks:
@@ -17,6 +19,6 @@ repos:
         name: Commit Review
         entry: rye run commit-review
         language: python
-        types: [python]
         pass_filenames: false
         verbose: true
+        stages: ["commit-msg"]

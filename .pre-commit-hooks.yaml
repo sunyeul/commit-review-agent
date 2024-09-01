@@ -2,6 +2,6 @@
   name: Commit Review
   entry: rye run commit-review
   language: python
-  types: [python]
   pass_filenames: false
   verbose: true
+  stages: ["commit-msg"]

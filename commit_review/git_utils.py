@@ -18,20 +18,19 @@ def get_staged_python_files(repo: Repo) -> List[str]:
 
 def get_staged_file_contents(file_paths: List[str]) -> str:
     """ステージされたファイルの内容を取得します。"""
-    try:
-        staged_file_contents = ""
+    staged_file_contents = ""
 
-        for file_path in file_paths:
-            if not os.path.isfile(file_path) or os.path.getsize(file_path) == 0:
-                continue
-            with open(file_path, "r") as f:
+    for file_path in file_paths:
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
                 staged_file_contents += f"----------{file_path}----------\n"
                 staged_file_contents += f.read()
                 staged_file_contents += "\n" + "-" * 40
-        return staged_file_contents
-    except Exception as e:
-        print(f"予期しないエラーが発生しました: {e}")
-    return ""
+        except Exception as e:
+            print(f"ファイル {file_path} の読み取り中にエラーが発生しました: {e}")
+            continue
+
+    return staged_file_contents
 
 
 def get_staged_file_changes(file_paths: List[str], repo: Repo) -> str:

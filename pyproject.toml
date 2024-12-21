@@ -32,7 +32,13 @@ dev-dependencies = [
     "ruff>=0.5.6",
     "pre-commit>=3.8.0",
     "ipykernel>=6.29.5",
+    "pytest>=7.4.0",
+    "pytest-mock>=3.14.0",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
